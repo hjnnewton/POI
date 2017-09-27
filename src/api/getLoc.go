@@ -1,19 +1,19 @@
 package location
 
 import (
-	"net/http"
-	"io/ioutil"
-	"fmt"
+	"github.com/bitly/go-simplejson"
 )
 
 // Get location info by longitude and latitude
-func GetLocation(latitude string, longitude string, ak string){
+// The return values are the formatted address and address components
 
-	senUrl := "http://api.map.baidu.com/geocoder/v2/?location=" +
-		latitude + "," + longitude +"&output=json" +
-		"&pois=1&radius=1000&ak=" + ak
-	response,_:=http.Get(senUrl)
-	defer response.Body.Close()
-	body,_:=ioutil.ReadAll(response.Body)
-	fmt.Println(string(body))
+func GetLocation(latitude string, longitude string, ak string)(string, string){
+	body:=GeoCoder(latitude, longitude, ak)
+	js, err := simplejson.NewJson([]byte(body))
+	if err != nil {
+		panic(err.Error())
+	}
+	address, _ := js.Get("result").Get("formatted_address").String()
+	addressInJson, _ := js.Get("result").Get("addressComponent").MarshalJSON()
+	return address, string(addressInJson)
 }
