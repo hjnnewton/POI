@@ -2,7 +2,6 @@ package location
 
 import (
 	"github.com/bitly/go-simplejson"
-	"fmt"
 	"encoding/json"
 
 )
@@ -20,8 +19,8 @@ func GetSurrounding(latitude string, longitude string, ak string)[]interface {}{
 	if err := json.Unmarshal([]byte(string(surroundings)), &dat); err == nil {
 		// Transfer json str into map type
 		mapTmp = dat["pois"].([]interface {})
-		fmt.Println(GetNames(mapTmp))
-		fmt.Println(GetInfo(mapTmp, 2))
+		//fmt.Println(GetNames(mapTmp))
+		//fmt.Println(GetInfo(mapTmp, 2))
 		return mapTmp
 	}
 	// Return value is a list of maps of information of surrounding places
