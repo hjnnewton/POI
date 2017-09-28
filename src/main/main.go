@@ -14,4 +14,7 @@ func main(){
 	fmt.Println(location.GetNames(surrounding))
 	// 返回某一条地点具体信息
 	fmt.Println(location.GetInfo(surrounding, 2))
+
+	lng, lat := location.GetCoordinate("北京望京SOHO", "4zbsyOHMfdK5BDnhnkthr53Z")
+	fmt.Println(lng, lat)
 }
