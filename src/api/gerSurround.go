@@ -1,9 +1,9 @@
 package location
 
 import (
-	"github.com/bitly/go-simplejson"
+	"go-simplejson"
+	//"github.com/bitly/go-simplejson"
 	"encoding/json"
-
 )
 
 // According to the latitude and longitude, return the surrounding places information

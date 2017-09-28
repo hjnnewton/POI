@@ -1,7 +1,8 @@
 package location
 
 import (
-	"github.com/bitly/go-simplejson"
+	//"github.com/bitly/go-simplejson"
+	"go-simplejson"
 )
 
 // Get location info by longitude and latitude
